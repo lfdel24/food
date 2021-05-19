@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:faker/faker.dart';
 
 class BuilderCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Container(
-        margin: EdgeInsets.only(left: 8, top: 8, bottom: 20),
+    return Container(
+      margin: EdgeInsets.all(8.0),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
         child: Row(
           children: [
             ...List.generate(
-              10,
+              15,
               (index) => Container(
                 margin: EdgeInsets.only(right: 8),
                 child: TextButton(
@@ -18,7 +19,10 @@ class BuilderCategory extends StatelessWidget {
                   style: TextButton.styleFrom(
                       primary: index == 0 ? Colors.white : Colors.red,
                       backgroundColor: index == 0 ? Colors.red : Colors.white),
-                  child: Text("Category $index"),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Text(faker.lorem.word()),
+                  ),
                 ),
               ),
             ),

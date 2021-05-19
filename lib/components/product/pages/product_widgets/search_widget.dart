@@ -6,9 +6,11 @@ class BuilderSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       child: TextField(
         autofocus: true,
-        decoration: InputDecoration(labelText: ProductText.search),
+        decoration: InputDecoration(
+            icon: Icon(Icons.search), labelText: ProductText.search),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:faker/faker.dart';
 
 class BuilderItem extends StatelessWidget {
   @override
@@ -10,22 +11,22 @@ class BuilderItem extends StatelessWidget {
         children: [
           ClipOval(
             child: Image.network(
-              'https://i.pinimg.com/736x/1a/e6/bd/1ae6bdd3616eb2c6fd7e181a8615fc06.jpg',
+              faker.image.image(random: true),
               width: 100,
               height: 100,
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 8),
+          SizedBox(width: 12),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Hamburguesa triple doble",
+                faker.lorem.word(),
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Text("Detalle"),
-              Text("1.000.000"),
+              Text(faker.lorem.word()),
+              Text(faker.currency.random.decimal(min: 3).toString()),
             ],
           ),
         ],
