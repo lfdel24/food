@@ -1,10 +1,16 @@
 class Product {
   String id;
-  String pathImg;
-  String name;
+  // codigo limit 20
+  String pathImg; //url
+  String name; //limit 50
   String detail;
-  double price;
+  double price; //Lista de price
   String categoryId;
+
+  factory Product.empty() {
+    return Product(
+        id: "", pathImg: "", name: "", detail: "", price: 0, categoryId: "");
+  }
 
   Product({
     required this.id,

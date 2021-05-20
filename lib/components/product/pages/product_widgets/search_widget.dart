@@ -4,14 +4,10 @@ import 'package:food/components/product/product_text.dart';
 class BuilderSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.all(8.0),
-      child: TextField(
-        autofocus: true,
-        decoration: InputDecoration(
-            icon: Icon(Icons.search), labelText: ProductText.search),
-      ),
+    return TextField(
+      autofocus: true,
+      decoration: InputDecoration(
+          icon: Icon(Icons.search), labelText: ProductText.search),
     );
   }
 }
