@@ -12,31 +12,26 @@ class ProductPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Custom.appBar(context, ProductText.title, actions: [
+      appBar: customAppBar(context, ProductText.title, actions: [
         IconButton(
           onPressed: () {},
           icon: Icon(Icons.menu),
         )
       ]),
-      body: Custom.container(
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            BuilderSearch(),
-            BuilderCategory(),
-            SizedBox(height: 8),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ...List.generate(50, (index) => BuilderItem()),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+      body: CustomBody(children: [
+        BuilderSearch(),
+        BuilderCategory(),
+        SizedBox(height: 8),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                ...List.generate(50, (index) => BuilderItem()),
+              ],
+            ),
+          ),
+        )
+      ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(CreateProductPage()),
         child: Icon(Icons.add),
