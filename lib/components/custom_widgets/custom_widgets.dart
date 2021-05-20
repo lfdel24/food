@@ -54,41 +54,38 @@ class CustomBody extends StatelessWidget {
   }
 }
 
-class PrimaryTextButton extends StatelessWidget {
+class CustomTextButton extends StatelessWidget {
   final Function()? onPressed;
-  final String text;
+  final Widget child;
+  final EdgeInsets? margin;
+  final ButtonStyle? buttonStyle;
 
-  const PrimaryTextButton({Key? key, this.onPressed, required this.text})
+  static ButtonStyle buttonStyleSecondary = TextButton.styleFrom(
+      primary: Colors.red,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)));
+
+  static ButtonStyle buttonStylePrimary = TextButton.styleFrom(
+      primary: Colors.white,
+      backgroundColor: Colors.red,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)));
+
+  const CustomTextButton(
+      {Key? key,
+      required this.child,
+      this.onPressed,
+      this.margin,
+      this.buttonStyle})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: this.margin,
       child: TextButton(
         onPressed: onPressed,
-        style: TextButton.styleFrom(
-            primary: Colors.white, backgroundColor: Colors.red),
-        child: Text(text),
-      ),
-    );
-  }
-}
-
-class SecondaryTextButton extends StatelessWidget {
-  final Function()? onPressed;
-  final String text;
-
-  const SecondaryTextButton({Key? key, this.onPressed, required this.text})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: TextButton(
-        onPressed: onPressed,
-        style: TextButton.styleFrom(
-            primary: Colors.red, backgroundColor: Colors.white),
-        child: Text(text),
+        style: this.buttonStyle == null ? buttonStylePrimary : this.buttonStyle,
+        child: child,
       ),
     );
   }
