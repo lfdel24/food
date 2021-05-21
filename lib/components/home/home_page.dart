@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food/components/product/pages/create_product_page.dart';
+import 'package:food/components/product/pages/product_page.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
 class _BuilderBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // return ProductPage();
-    return CreateProductPage();
+    return ProductPage();
+    // return CreateProductPage();
   }
 }

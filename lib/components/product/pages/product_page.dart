@@ -19,16 +19,7 @@ class ProductPage extends StatelessWidget {
       body: CustomBody(children: [
         _BuilderSearch(),
         _BuilderCategory(),
-        SizedBox(height: 8),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                ...List.generate(100, (index) => _BuilderItem()),
-              ],
-            ),
-          ),
-        )
+        ...List.generate(50, (index) => _BuilderItem())
       ]),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(CreateProductPage()),
@@ -41,10 +32,12 @@ class ProductPage extends StatelessWidget {
 class _BuilderSearch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      autofocus: true,
-      decoration: InputDecoration(
-          icon: Icon(Icons.search), labelText: ProductText.search),
+    return Container(
+      child: TextField(
+        autofocus: true,
+        decoration: InputDecoration(
+            icon: Icon(Icons.search), labelText: ProductText.search),
+      ),
     );
   }
 }
@@ -53,22 +46,21 @@ class _BuilderCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: EdgeInsets.only(top: 12, bottom: 8),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
           children: [
             ...List.generate(
               15,
-              (index) => TextButton(
-                onPressed: () {},
-                style: TextButton.styleFrom(
-                    primary: index == 0 ? Colors.white : Colors.red,
-                    backgroundColor: index == 0 ? Colors.red : Colors.white),
-                child: Padding(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(faker.lorem.word()),
-                ),
-              ),
+              (index) => CustomTextButton(
+                  margin: EdgeInsets.only(right: 12),
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.only(left: 12, right: 12, bottom: 1),
+                    child: Text(faker.lorem.word()),
+                  ),
+                  onPressed: () {}),
             ),
           ],
         ),
@@ -80,29 +72,33 @@ class _BuilderCategory extends StatelessWidget {
 class _BuilderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        ClipOval(
-          child: Image.network(
-            faker.image.image(random: true),
-            width: 100,
-            height: 100,
-            fit: BoxFit.cover,
-          ),
-        ),
-        SizedBox(width: 12),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              faker.lorem.word(),
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+    return Container(
+      margin: EdgeInsets.only(top: 4),
+      child: Row(
+        children: [
+          ClipOval(
+            child: Image.network(
+              faker.image.image(random: true),
+              width: 100,
+              height: 100,
+              fit: BoxFit.cover,
             ),
-            Text(faker.lorem.word()),
-            Text(faker.currency.random.decimal(min: 3).toString()),
-          ],
-        ),
-      ],
+          ),
+          SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                faker.lorem.word(),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              Text(faker.lorem.word()),
+              Text(faker.currency.random.decimal(min: 3).toString()),
+              Divider()
+            ],
+          ),
+        ],
+      ),
     );
   }
 }

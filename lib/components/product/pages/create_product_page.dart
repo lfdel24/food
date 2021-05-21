@@ -45,16 +45,30 @@ class _BuilderButtons extends StatelessWidget {
       children: [
         Expanded(
             child: CustomTextButton(child: Text("Aceptar"), onPressed: () {})),
-        SizedBox(width: 16),
-        Expanded(
-            child: CustomTextButton(
-                child: Text("Cancelar"), onPressed: () => Get.back())),
+        // SizedBox(width: 16),
+        // Expanded(
+        //     child: CustomTextButton(
+        //         child: Text("Cancelar"), onPressed: () => Get.back())),
       ],
     );
   }
 }
 
 class _BuilderListPrice extends StatelessWidget {
+  void defaultDialog() {
+    Get.defaultDialog(
+        title: "LISTA DE PRECIOS",
+        content: Expanded(
+            child: SingleChildScrollView(
+          child: Column(children: [
+            ListTile(
+              title: Text(faker.lorem.random.string(10)),
+              onTap: () => Get.back(),
+            ),
+          ]),
+        )));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -71,17 +85,7 @@ class _BuilderListPrice extends StatelessWidget {
                   (index) => CustomTextButton(
                         margin: EdgeInsets.only(right: 20),
                         buttonStyle: CustomTextButton.buttonStyleSecondary,
-                        onPressed: () => Get.defaultDialog(
-                            title: "LISTA DE PRECIOS",
-                            content: Expanded(
-                                child: SingleChildScrollView(
-                              child: Column(children: [
-                                ListTile(
-                                  title: Text(faker.lorem.random.string(10)),
-                                  onTap: () => Get.back(),
-                                ),
-                              ]),
-                            ))),
+                        onPressed: () => defaultDialog,
                         child: Padding(
                           padding: const EdgeInsets.only(
                               left: 12, right: 12, bottom: 1),
