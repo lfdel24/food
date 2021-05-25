@@ -2,7 +2,6 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:food/components/custom_widgets/custom_widgets.dart';
 import 'package:food/components/product/product_text.dart';
-import 'package:get/get.dart';
 
 import 'create_product_page.dart';
 
@@ -26,7 +25,8 @@ class ProductPage extends StatelessWidget {
         ]),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.to(CreateProductPage()),
+        onPressed: () => Navigator.of(context)
+            .push(MaterialPageRoute(builder: (_) => CreateProductPage())),
         child: Icon(Icons.add),
       ),
     );

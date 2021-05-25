@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CustomTextField extends StatelessWidget {
   final String labelText;
@@ -109,11 +108,11 @@ AppBar customAppBar(BuildContext context, String title,
               Icon(Icons.location_on_rounded, size: 14),
               SizedBox(width: 4),
               InkWell(
-                onDoubleTap: () => Get.defaultDialog(
-                    title: "LEONARDO DE LA CRUZ",
-                    content: Text(
-                      "Cra. 6 #29 Norte-648 a 29 Norte-1034,, Salento, Quindío",
-                    )),
+                // onDoubleTap: () => Get.defaultDialog(
+                //     title: "LEONARDO DE LA CRUZ",
+                //     content: Text(
+                //       "Cra. 6 #29 Norte-648 a 29 Norte-1034,, Salento, Quindío",
+                //     )),
                 child: Text(
                   "Cra. 6 #29 Norte-648 a 29 Norte-1034,, Salento, Quindío",
                   style: TextStyle(fontSize: 13),

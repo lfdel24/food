@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:food/components/custom_widgets/custom_widgets.dart';
-import 'package:get/get.dart';
 
 class CreateProductPage extends StatelessWidget {
   @override
@@ -69,18 +68,28 @@ class _BuilderButtons extends StatelessWidget {
 }
 
 class _BuilderListPrice extends StatelessWidget {
-  void defaultDialog() {
-    Get.defaultDialog(
-        title: "LISTA DE PRECIOS",
-        content: Expanded(
-            child: SingleChildScrollView(
-          child: Column(children: [
-            ListTile(
-              title: Text(faker.lorem.random.string(10)),
-              onTap: () => Get.back(),
+  void _showDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("LISTA DE PRECIOS"),
+            content: Container(
+              width: 200,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    ...List.generate(
+                        10,
+                        (index) => ListTile(
+                            title: Text(faker.lorem.random.string(10)),
+                            onTap: () => Navigator.pop(context))),
+                  ],
+                ),
+              ),
             ),
-          ]),
-        )));
+          );
+        });
   }
 
   @override
@@ -99,7 +108,7 @@ class _BuilderListPrice extends StatelessWidget {
                   (index) => CustomTextButton(
                         margin: EdgeInsets.only(right: 20),
                         buttonStyle: CustomTextButton.buttonStyleSecondary,
-                        onPressed: () => defaultDialog,
+                        onPressed: () => _showDialog(context),
                         child: Padding(
                           padding: const EdgeInsets.only(
                               left: 12, right: 12, bottom: 1),
@@ -154,27 +163,34 @@ class _BuilderImage extends StatelessWidget {
 }
 
 class _BuilderCategory extends StatelessWidget {
+  void _showDialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("CATEGORIASS"),
+            content: SingleChildScrollView(
+              child: Column(
+                children: [
+                  ...List.generate(
+                      10,
+                      (index) => ListTile(
+                            title: Text(faker.lorem.random.string(10)),
+                            onTap: () => Navigator.pop(context),
+                          )),
+                ],
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(top: 12),
       child: TextButton(
-        onPressed: () => Get.defaultDialog(
-            title: "CATEGORIAS",
-            content: Expanded(
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    ...List.generate(
-                        10,
-                        (index) => ListTile(
-                              title: Text(faker.lorem.random.string(10)),
-                              onTap: () => Get.back(),
-                            )),
-                  ],
-                ),
-              ),
-            )),
+        onPressed: () => _showDialog(context),
         child: Row(
           children: [
             Expanded(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'components/home/home_page.dart';
 
@@ -10,7 +9,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Food',
       theme: ThemeData(
@@ -21,6 +20,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//TODO: Buscar dialog
 //TODO Crear categorias
 //TODO Crear lista de precios
 //TODO Funcionar el filtro de productos
