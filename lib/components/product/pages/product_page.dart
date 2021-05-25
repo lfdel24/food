@@ -16,11 +16,15 @@ class ProductPage extends StatelessWidget {
           icon: Icon(Icons.menu),
         )
       ]),
-      body: CustomBody(children: [
-        _BuilderSearch(),
-        _BuilderCategory(),
-        ...List.generate(50, (index) => _BuilderItem())
-      ]),
+      body: Container(
+        margin: EdgeInsets.all(8),
+        padding: EdgeInsets.all(8),
+        child: Column(children: [
+          _BuilderSearch(),
+          _BuilderCategory(),
+          _BuilderItem(),
+        ]),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => Get.to(CreateProductPage()),
         child: Icon(Icons.add),
@@ -46,7 +50,7 @@ class _BuilderCategory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 12, bottom: 8),
+      margin: EdgeInsets.only(top: 16, bottom: 8),
       child: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Row(
@@ -72,32 +76,40 @@ class _BuilderCategory extends StatelessWidget {
 class _BuilderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(top: 4),
-      child: Row(
-        children: [
-          ClipOval(
-            child: Image.network(
-              faker.image.image(random: true),
-              width: 100,
-              height: 100,
-              fit: BoxFit.cover,
+    return Expanded(
+      child: Scrollbar(
+        child: ListView.builder(
+          itemCount: 100,
+          itemBuilder: (_, index) => Container(
+            margin: EdgeInsets.only(top: 6),
+            child: Row(
+              children: [
+                ClipOval(
+                  child: Image.network(
+                    faker.image.image(random: true),
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                SizedBox(width: 12),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      faker.lorem.word(),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    ),
+                    Text("${faker.lorem.words(1)}"),
+                    Text(faker.currency.random.decimal(min: 4).toString()),
+                    Divider()
+                  ],
+                ),
+              ],
             ),
           ),
-          SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                faker.lorem.word(),
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              Text(faker.lorem.word()),
-              Text(faker.currency.random.decimal(min: 3).toString()),
-              Divider()
-            ],
-          ),
-        ],
+        ),
       ),
     );
   }

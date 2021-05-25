@@ -20,3 +20,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+//TODO Crear categorias
+//TODO Crear lista de precios
+//TODO Funcionar el filtro de productos
+//TODO Guardar la url de la imagen

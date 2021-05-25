@@ -30,29 +30,29 @@ class CustomTextField extends StatelessWidget {
   }
 }
 
-class CustomBody extends StatelessWidget {
-  final List<Widget> children;
-  final CrossAxisAlignment crossAxisAlignment;
+// class CustomBody extends StatelessWidget {
+//   final List<Widget> children;
+//   final CrossAxisAlignment crossAxisAlignment;
 
-  const CustomBody(
-      {Key? key,
-      required this.children,
-      this.crossAxisAlignment = CrossAxisAlignment.start})
-      : super(key: key);
+//   const CustomBody(
+//       {Key? key,
+//       required this.children,
+//       this.crossAxisAlignment = CrossAxisAlignment.start})
+//       : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.all(8.0),
-      child: SingleChildScrollView(
-        child: Column(
-            crossAxisAlignment: this.crossAxisAlignment,
-            children: this.children),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return SingleChildScrollView(
+//       child: Container(
+//         padding: const EdgeInsets.all(8.0),
+//         margin: const EdgeInsets.all(8.0),
+//         child: Column(
+//             crossAxisAlignment: this.crossAxisAlignment,
+//             children: this.children),
+//       ),
+//     );
+//   }
+// }
 
 class CustomTextButton extends StatelessWidget {
   final Function()? onPressed;

@@ -16,25 +16,39 @@ class CreateProductPage extends StatelessWidget {
 class _BuilderBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CustomBody(children: [
-      _BuilderImage(),
-      _BuilderCategory(),
-      CustomTextField(
-        labelText: "Código",
-        autofocus: true,
-        margin: EdgeInsets.only(top: 12, bottom: 12),
-      ),
-      CustomTextField(
-        labelText: "Nombre",
-        margin: EdgeInsets.only(top: 12, bottom: 12),
-      ),
-      CustomTextField(
-        labelText: "Detalle",
-        margin: EdgeInsets.only(top: 12, bottom: 24),
-      ),
-      _BuilderListPrice(),
-      _BuilderButtons(),
-    ]);
+    return Container(
+      margin: EdgeInsets.all(8),
+      padding: EdgeInsets.all(8),
+      child: Column(children: [
+        Expanded(
+          child: Scrollbar(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  _BuilderImage(),
+                  _BuilderCategory(),
+                  CustomTextField(
+                    labelText: "Código",
+                    autofocus: true,
+                    margin: EdgeInsets.only(top: 12, bottom: 12),
+                  ),
+                  CustomTextField(
+                    labelText: "Nombre",
+                    margin: EdgeInsets.only(top: 12, bottom: 12),
+                  ),
+                  CustomTextField(
+                    labelText: "Detalle",
+                    margin: EdgeInsets.only(top: 12, bottom: 24),
+                  ),
+                  _BuilderListPrice(),
+                ],
+              ),
+            ),
+          ),
+        ),
+        _BuilderButtons(),
+      ]),
+    );
   }
 }
 
